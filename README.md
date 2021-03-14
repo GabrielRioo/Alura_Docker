@@ -98,13 +98,19 @@
       * `version: '3'` - versão
       * `services:` - listar os serviços
       * `nginx` - serviço exemplo
-      * `build: ./docker/nginx.dokcerfile` - contruido a partir desse caminho
+      * `build: ./docker/nginx.dockerfile` - contruido a partir desse caminho
       * `context: .`
       * `image: nomeImagem` - nome da imagem
       * `container_name: nginx`
-      * `port: - 80:80` - definir a porta padrao
+      * `ports: - 80:80` - definir a porta padrao
       * `networks: - production-network` - rede a qual vai ser associado
       * `depends_on: - "node1"` - depende do container especificado construido para ser buildado.
+   * `docker-compose build` - builda o arquivo `.yml` se nao tiver nenhum erro.
+   * `docker-compose up` - executa a os serviços, abre as portas.. do arquivo `yml` **(precisa estar na pasta do projeto `yml`)**
+   * `docker-compose up -d` - libera o terminal e deixa o container executando. **(precisa estar na pasta do projeto `yml`)**
+   * `docker-compose down` - para os containers **(precisa estar na pasta do projeto `yml`)**
+   * `docker-compose ps` - listar os containers rodando
+   * `docker-compose restart` - reinicia todos os serviços
 
 #### Criando a propria Rede Id
 * Os containers para conversarem entre si, devem estar na mesma rede
