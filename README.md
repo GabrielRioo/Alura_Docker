@@ -88,3 +88,10 @@
    * `docker push <imagem a subir>` - subir a imagem para o docker hub
    * `docker pull <imagem nome>` - pegar imagem do docker hub
 
+#### Criando a propria Rede Id
+* `docker network create --driver bridge minha-rede` - cria a rede
+* `docker run -it --name meu-container-ubuntu --network minha-rede ubuntu` - criando container em uma rede EXISTENTE
+* `docker network ls` - listar todos os nomes das redes criadas
+
+#### Terminal Ubuntu:
+* `hostname -i` - ip da rede deafault
