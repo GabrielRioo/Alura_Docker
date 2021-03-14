@@ -88,7 +88,26 @@
    * `docker push <imagem a subir>` - subir a imagem para o docker hub
    * `docker pull <imagem nome>` - pegar imagem do docker hub
 
+#### Docker Compose
+* Sem o docker compose, as chances de erro sao maiores:
+   * Muitas flags, muito manual, **o banco de dados deve subir antes da aplicação**... 
+* Orquestra os containers
+* Criar o arquivo `docker-compose.yml` no projeto.
+   *  Arquivo para conter o build completo dos containers
+   *  A tabulação é feita somente com `TAB`
+      * `version: '3'` - versão
+      * `services:` - listar os serviços
+      * `nginx` - serviço exemplo
+      * `build: ./docker/nginx.dokcerfile` - contruido a partir desse caminho
+      * `context: .`
+      * `image: nomeImagem` - nome da imagem
+      * `container_name: nginx`
+      * `port: - 80:80` - definir a porta padrao
+      * `networks: - production-network` - rede a qual vai ser associado
+      * `depends_on: - "node1"` - depende do container especificado construido para ser buildado.
+
 #### Criando a propria Rede Id
+* Os containers para conversarem entre si, devem estar na mesma rede
 * `docker network create --driver bridge minha-rede` - cria a rede
 * `docker run -it --name meu-container-ubuntu --network minha-rede ubuntu` - criando container em uma rede EXISTENTE
 * `docker network ls` - listar todos os nomes das redes criadas
