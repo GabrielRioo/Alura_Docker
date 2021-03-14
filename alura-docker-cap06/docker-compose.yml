@@ -1,0 +1,58 @@
+version: '3'
+services:
+  nginx: 
+    build:
+      dokcerfile: ./docker/nginx.dokcerfile
+      context: .
+    image: douglasq/nginx
+    container_name: nginx
+    port:
+      - "80:80"
+    network:
+      - production-network
+
+
+  mongodb:
+    image: mongo
+    network:
+      - production-network
+
+
+  node1:
+    build:
+      dokcerfile: ./docker/alura-books.dokcerfile
+      context: .
+    image: douglasq/alura-books
+    container_name: alura-books1
+    port: 
+      - "3000"
+    network:
+      - production-network
+
+
+  node2:
+    build:
+      dokcerfile: ./docker/alura-books.dokcerfile
+      context: .
+    image: douglasq/alura-books
+    container_name: alura-books2
+    port: 
+      - "3000"
+    network:
+      - production-network
+
+
+  node3:
+    build:
+      dokcerfile: ./docker/alura-books.dokcerfile
+      context: .
+    image: douglasq/alura-books
+    container_name: alura-books3
+    port: 
+      - "3000"
+    network:
+      - production-network
+      
+networks:
+  production-network:
+    driver: bridge
